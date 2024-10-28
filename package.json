@@ -1,14 +1,17 @@
 {
-  "name": "design-system",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@zkemail/orion",
+  "version": "0.0.0",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "dev-lib": "rollup -c -w",
+    "build-lib": "rollup -c",
+    "publish-lib": "npm run build-lib && npm publish"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -55,6 +58,9 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
     "@storybook/addon-essentials": "^8.3.3",
     "@storybook/addon-interactions": "^8.3.3",
     "@storybook/addon-links": "^8.3.3",
@@ -70,8 +76,16 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "postcss": "^8",
+    "rollup": "^4.24.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "storybook": "^8.3.3",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+    "typescript": "^5.0.2"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
 }
